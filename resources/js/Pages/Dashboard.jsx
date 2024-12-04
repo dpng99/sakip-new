@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
-
-export default function Dashboard() {
+import { Container } from '@mui/material';
+import SakipKejatiTable from '@/Components/SakipKejatiTable';
+export default function Dashboard({dataCapaian}) {
+ 
+  console.log(dataCapaian);
     return (
         <AuthenticatedLayout
             header={
@@ -11,16 +15,13 @@ export default function Dashboard() {
             }
         >
             <Head title="Dashboard" />
-
-            <div className="py-12">
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                            You're logged in!
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Container
+                    maxWidth="lg"
+                    className="bg-white-200 overflow-hidden shadow-sm sm:rounded-lg p-5 m-3"
+                >
+            <SakipKejatiTable dataCapaian={dataCapaian} />
+            </Container>
+                  
         </AuthenticatedLayout>
     );
 }
